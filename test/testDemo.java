@@ -98,13 +98,19 @@ public class testDemo{
         assertEquals(s.getCurrentSpeed(), s.getEnginePower(), 0);
 
     }
+
+    /**
+     * Tests that the speed factor is greater when the turbo is on
+     * than when the turbo is off
+     */
+
     @Test
     public void testTurboOff(){
         s.setTurboOn();
-        System.out.println(s.speedFactor());
+        double a = s.speedFactor();
         s.setTurboOff();
-        System.out.println(s.speedFactor());
-        assertEquals(s.speedFactor(), 1.25, 0.01);
+        double b = s.speedFactor();
+        assertTrue(a > b);
     }
 
 
