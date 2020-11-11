@@ -15,10 +15,10 @@ public abstract class Car implements Movable{
     /**
      * Constructor sets number of doors, engine power, colour and model name based on parameters
      * Also sets the direction to north and the location to 0,0
-     * @param nrDoors
-     * @param enginePower
-     * @param color
-     * @param modelName
+     * @param nrDoors number of doors
+     * @param enginePower engine power
+     * @param color colour
+     * @param modelName model name
      */
 
     public Car(int nrDoors, double enginePower,
@@ -73,7 +73,7 @@ public abstract class Car implements Movable{
 
     /**
      * Sets the colour of the car using the Color parameter clr
-     * @param clr
+     * @param clr the desired colour for the car
      */
 
     public void setColor(Color clr){
@@ -99,8 +99,8 @@ public abstract class Car implements Movable{
     }
 
     /**
-     * Increases the speed by a certain amount that is between 0 and 1
-     * @param amount
+     * Gas by a certain amount to increase the speed
+     * @param amount how much you gas
      */
 
     public void gas(double amount){
@@ -111,8 +111,8 @@ public abstract class Car implements Movable{
     }
 
     /**
-     * Decreases the speed by a certain amount that is between 0 and 1
-     * @param amount
+     * Brake to decrease the speed
+     * @param amount how much you brake
      */
 
     public void brake(double amount){
@@ -123,9 +123,9 @@ public abstract class Car implements Movable{
     }
 
     /**
-     * Increases the speed by a certain amount multiplied by a speedfactor,
+     * Increases the speed by a certain amount multiplied by the speed factor,
      * unless it exceeds the engine power
-     * @param amount
+     * @param amount how much the speed will increase divided by the speed factor
      */
 
     private void incrementSpeed(double amount){
@@ -135,7 +135,7 @@ public abstract class Car implements Movable{
     /**
      * Decreases the speed by a certain amount multiplied by the speed factor,
      * unless it goes below 0
-     * @param amount
+     * @param amount how much the speed will decrease divided by the speed factor
      */
 
     private void decrementSpeed(double amount){
