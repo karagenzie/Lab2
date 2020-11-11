@@ -9,8 +9,8 @@ public abstract class Car implements Movable{
     private String modelName; // The car model name
 
     private int direction;  // 1 = North, 2 = East, 3 = South, 4 = West
-    private int x; // x-position
-    private int y; // y-position
+    private double x; // x-position
+    private double y; // y-position
 
     /**
      * Constructor sets number of doors, engine power, colour and model name based on parameters
@@ -82,6 +82,7 @@ public abstract class Car implements Movable{
 
     /**
      * Starts the engine
+     * Current speed gets set to 0.1
      */
 
     public void startEngine(){
@@ -90,6 +91,7 @@ public abstract class Car implements Movable{
 
     /**
      * Stops the engine
+     * Current speed gets set to 0
      */
 
     public void stopEngine(){
@@ -165,7 +167,7 @@ public abstract class Car implements Movable{
      */
 
     public void turnLeft(){
-        if (1 < direction && direction < 5)
+        if (1 < direction)
             direction += -1;
         else
             direction = 4;
@@ -176,14 +178,29 @@ public abstract class Car implements Movable{
      */
 
     public void turnRight(){
-        if (0 < direction && direction < 4)
+        if (direction < 4)
             direction += 1;
         else
             direction = 1;
     }
 
+    public String getDirection(){
+
+        if (direction == 1)
+            return "North";
+        else if (direction == 2)
+            return "East";
+        else if (direction == 3)
+            return "South";
+        else
+            return "West";
+
+    }
+
+    public String getPosition(){
+
+        return ("Position: (" + x + "," + y + ")");
+
+    }
+
 }
-
-
-// private och public (protected), svårt när private inte ärvs och då blir getters inte så relevanta
-// om statiska typen måste kunna vara car (angående turbometoden)
