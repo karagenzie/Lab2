@@ -184,6 +184,11 @@ public abstract class Car implements Movable{
             direction = 1;
     }
 
+    /**
+     * Returns what direction the car is facing in the form of a string
+     * @return the direction
+     */
+
     public String getDirection(){
 
         if (direction == 1)
@@ -196,6 +201,11 @@ public abstract class Car implements Movable{
             return "West";
 
     }
+
+    /**
+     * Returns the position of the car in the form of a string
+     * @return the position of the car
+     */
 
     public String getPosition(){
 
