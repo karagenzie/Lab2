@@ -98,4 +98,14 @@ public class testDemo{
         assertEquals(s.getCurrentSpeed(), s.getEnginePower(), 0);
 
     }
+    @Test
+    public void testTurboOff(){
+        s.setTurboOn();
+        System.out.println(s.speedFactor());
+        s.setTurboOff();
+        System.out.println(s.speedFactor());
+        assertEquals(s.speedFactor(), 1.25, 0.01);
+    }
+
+
 }
