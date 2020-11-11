@@ -5,9 +5,8 @@ public class Saab95 extends Car{
     private boolean turboOn;
 
     /**
-     * Constructor for the car, setting
-     * number of doors, colour, engine power, turbo setting and model name,
-     * as well as setting the current speed to zero.
+     * Calls the superclass constructor with certain parameters
+     * Also sets the turbo to off
      */
 
     public Saab95(){
@@ -17,9 +16,17 @@ public class Saab95 extends Car{
 
     }
 
+    /**
+     * Sets the turbo to on
+     */
+
     public void setTurboOn(){
 	    turboOn = true;
     }
+
+    /**
+     * Sets the turbo to off
+     */
 
     public void setTurboOff(){
 	    turboOn = false;

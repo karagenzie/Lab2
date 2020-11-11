@@ -13,7 +13,12 @@ public abstract class Car implements Movable{
     private int y; // y-position
 
     /**
-     * Empty constructor because it is an abstract class
+     * Constructor sets number of doors, engine power, colour and model name based on parameters
+     * Also sets the direction to north and the location to 0,0
+     * @param nrDoors
+     * @param enginePower
+     * @param color
+     * @param modelName
      */
 
     public Car(int nrDoors, double enginePower,

@@ -5,9 +5,7 @@ public class Volvo240 extends Car implements Movable{
     private final static double trimFactor = 1.25;
 
     /**
-     * Constructor for the car, setting
-     * number of doors, colour, engine power and model name,
-     * as well as setting the current speed to zero.
+     * Calls the superclass constructor with certain parameters
      */
 
     public Volvo240(){
@@ -28,6 +26,4 @@ public class Volvo240 extends Car implements Movable{
     protected double speedFactor(){
         return getEnginePower() * 0.01 * trimFactor;
     }
-
-
 }
