@@ -5,7 +5,7 @@ interface Movable {
     void turnRight();
 
     String getDirection();
-    String getPosition();
+    Location getPosition();
 
 
 }

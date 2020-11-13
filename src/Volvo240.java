@@ -69,7 +69,7 @@ public class Volvo240 implements getAndSet, Engine, Movable{
         return car.getDirection();
     }
 
-    public String getPosition() {
+    public Location getPosition() {
         return car.getPosition();
     }
 

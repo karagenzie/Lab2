@@ -9,8 +9,7 @@ public class Car implements Movable{
     private String modelName; // The car model name
 
     private int direction;  // 1 = North, 2 = East, 3 = South, 4 = West
-    private double x; // x-position
-    private double y; // y-position
+    private Location position;
 
     /**
      * Constructor sets number of doors, engine power, colour and model name based on parameters
@@ -29,8 +28,7 @@ public class Car implements Movable{
         this.color = color;
         this.modelName = modelName;
         direction = 1;
-        x = 0;
-        y = 0;
+        position = new Location(0,0);
         stopEngine();
 
     }
@@ -148,9 +146,9 @@ public class Car implements Movable{
 
     public void move(){
         if (direction == 1 || direction == 3)
-            y += (2-direction) * getCurrentSpeed();
+            position.addY((2-direction) * getCurrentSpeed());
         else
-            x += (3-direction) * getCurrentSpeed();
+            position.addX((3-direction) * getCurrentSpeed());
     }
 
     /**
@@ -198,9 +196,9 @@ public class Car implements Movable{
      * @return the position of the car
      */
 
-    public String getPosition(){
+    public Location getPosition(){
 
-        return ("Position: (" + x + "," + y + ")");
+        return position;
 
     }
 
