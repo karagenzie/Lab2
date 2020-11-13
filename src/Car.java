@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public abstract class Car implements Movable{
+public class Car implements Movable{
 
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car
@@ -103,9 +103,9 @@ public abstract class Car implements Movable{
      * @param amount how much you gas
      */
 
-    public void gas(double amount){
+    public void gas(double amount, double speedFactor){
         if (amount >= 0 && amount <= 1)
-            incrementSpeed(amount);
+            incrementSpeed(amount, speedFactor);
         else
             System.out.println("Must be between 0 and 1!");
     }
@@ -115,9 +115,9 @@ public abstract class Car implements Movable{
      * @param amount how much you brake
      */
 
-    public void brake(double amount){
+    public void brake(double amount, double speedFactor){
         if (amount >= 0 && amount <= 1)
-            decrementSpeed(amount);
+            decrementSpeed(amount, speedFactor);
         else
             System.out.println("Must be between 0 and 1!");
     }
@@ -128,8 +128,8 @@ public abstract class Car implements Movable{
      * @param amount how much the speed will increase divided by the speed factor
      */
 
-    private void incrementSpeed(double amount){
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower);
+    private void incrementSpeed(double amount, double speedFactor){
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor * amount,enginePower);
     }
 
     /**
@@ -138,18 +138,9 @@ public abstract class Car implements Movable{
      * @param amount how much the speed will decrease divided by the speed factor
      */
 
-    private void decrementSpeed(double amount){
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
+    private void decrementSpeed(double amount, double speedFactor){
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor * amount,0);
     }
-
-    /**
-     * Returns the speed factor
-     * Speed factor is defined differently in subclasses
-     * so here it is abstract
-     * @return the speed factor
-     */
-
-    protected abstract double speedFactor();
 
     /**
      * Moves the car forward in the direction it is facing

@@ -4,4 +4,8 @@ interface Movable {
     void turnLeft();
     void turnRight();
 
+    String getDirection();
+    String getPosition();
+
+
 }
