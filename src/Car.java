@@ -107,7 +107,7 @@ public class Car implements Movable{
         if (amount >= 0 && amount <= 1)
             incrementSpeed(amount, speedFactor);
         else
-            System.out.println("Must be between 0 and 1!");
+            throw new ArrayIndexOutOfBoundsException("Must be between 0 and 1!");
     }
 
     /**
@@ -119,7 +119,7 @@ public class Car implements Movable{
         if (amount >= 0 && amount <= 1)
             decrementSpeed(amount, speedFactor);
         else
-            System.out.println("Must be between 0 and 1!");
+            throw new ArrayIndexOutOfBoundsException("Must be between 0 and 1!");
     }
 
     /**
