@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ChopShop<Vehicle extends Car> {
+public class ChopShop<Vehicle extends Car> implements Load<Vehicle> {
 
     private CarTransport garage;
 
@@ -18,10 +18,17 @@ public class ChopShop<Vehicle extends Car> {
 
     public void loadOff(){
 
-        garage.loadOff();
+        Car lastCar = carList().get(carList().size()-1);
 
-        System.out.println(garage.lastCar().getModelName());
+        System.out.println(lastCar.getModelName());
+
+        garage.loadOff();
 
     }
 
+    public ArrayList<Car> carList(){
+
+        return garage.carList();
+
+    }
 }

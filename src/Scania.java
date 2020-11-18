@@ -5,7 +5,10 @@ public class Scania implements Engine, getAndSet, Movable, TruckBed{
     private Car car;
     private int bedAngle;
 
-
+    /**
+     *
+     * @param enginePower
+     */
     public Scania(double enginePower){
 
         car = new Car(2, enginePower, Color.white, "Scania");
@@ -16,7 +19,7 @@ public class Scania implements Engine, getAndSet, Movable, TruckBed{
     public Scania(int nrDoors, double enginePower,
                   Color color, String modelName){
 
-        car = new Car(2, enginePower, color, modelName);
+        car = new Car(nrDoors, enginePower, color, modelName);
         bedAngle = 0;
 
     }

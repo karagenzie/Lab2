@@ -8,13 +8,22 @@ public class testDemo2 {
 
         Saab95 sab = new Saab95();
         Volvo240 vol = new Volvo240();
-        ChopShop<Car> saabverkstad = new ChopShop<>(10);
+        ChopShop<Saab95> saabverkstad = new ChopShop<>(10);
 
-        sab.setLocation(new Location(0,0.5));
+        sab.setLocation(new Location(0,0));
 
         saabverkstad.loadOn(sab);
-        //saabverkstad.loadOn(vol);
+
+        System.out.println(saabverkstad.carList());
+
+        saabverkstad.loadOn(vol);
+
+        System.out.println(saabverkstad.carList());
+
         saabverkstad.loadOff();
+
+
+
 
     }
 }

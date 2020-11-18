@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class CarTransport implements Engine, getAndSet, Movable, Ramp {
+public class CarTransport implements Engine, getAndSet, Movable, Ramp, Load {
 
     private static double close = 1;
 
@@ -15,6 +15,12 @@ public class CarTransport implements Engine, getAndSet, Movable, Ramp {
 
         cars = new ArrayList<Car>();
         this.maxCap = maxCap;
+
+    }
+
+    public CarTransport(double nrDoors, double enginePower, Color color, String modelName, int maxCap){
+
+
 
     }
 
@@ -126,8 +132,8 @@ public class CarTransport implements Engine, getAndSet, Movable, Ramp {
     private boolean canLoad(Car car) {
         if (cars.size() < maxCap) {
             if (rampIsDown())
-                if ((Math.abs(getLocation().getX() - car.getLocation().getX()) < close
-                        && Math.abs(getLocation().getY() - car.getLocation().getY()) < close))
+                if (Math.sqrt(Math.pow(getLocation().getX() - car.getLocation().getX(),2)
+                        + Math.pow(getLocation().getY() - car.getLocation().getY(), 2)) < close)
                     return true;
         }
         return false;
@@ -137,6 +143,7 @@ public class CarTransport implements Engine, getAndSet, Movable, Ramp {
         if (rampIsDown()) {
 
             Car car = cars.get(cars.size() - 1);
+            car.startEngine();
             car.reverse();
             cars.remove(cars.size() - 1);
 
@@ -161,9 +168,9 @@ public class CarTransport implements Engine, getAndSet, Movable, Ramp {
 
     }
 
-    public Car lastCar(){
+    public ArrayList<Car> carList(){
 
-        return cars.get(cars.size()-1);
+        return cars;
 
     }
 
