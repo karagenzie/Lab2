@@ -96,16 +96,23 @@ public class Car implements Movable{
         currentSpeed = 0;
     }
 
+
+    public double speedFactor(){
+
+        return getEnginePower() * 0.01;
+
+    }
+
     /**
      * Gas by a certain amount to increase the speed
      * @param amount how much you gas
      */
 
-    public void gas(double amount, double speedFactor){
+    public void gas(double amount){
         if (amount >= 0 && amount <= 1)
-            incrementSpeed(amount, speedFactor);
+            incrementSpeed(amount);
         else
-            throw new ArrayIndexOutOfBoundsException("Must be between 0 and 1!");
+            System.out.println("Must be between 0 and 1!");
     }
 
     /**
@@ -113,11 +120,11 @@ public class Car implements Movable{
      * @param amount how much you brake
      */
 
-    public void brake(double amount, double speedFactor){
+    public void brake(double amount){
         if (amount >= 0 && amount <= 1)
-            decrementSpeed(amount, speedFactor);
+            decrementSpeed(amount);
         else
-            throw new ArrayIndexOutOfBoundsException("Must be between 0 and 1!");
+            System.out.println("Must be between 0 and 1!");
     }
 
     /**
@@ -126,8 +133,8 @@ public class Car implements Movable{
      * @param amount how much the speed will increase divided by the speed factor
      */
 
-    private void incrementSpeed(double amount, double speedFactor){
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor * amount,enginePower);
+    private void incrementSpeed(double amount){
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower);
     }
 
     /**
@@ -136,20 +143,27 @@ public class Car implements Movable{
      * @param amount how much the speed will decrease divided by the speed factor
      */
 
-    private void decrementSpeed(double amount, double speedFactor){
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor * amount,0);
+    private void decrementSpeed(double amount){
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
     }
 
     /**
      * Moves the car forward in the direction it is facing
      */
 
+    public void reverse(){
+        if (direction == 1 || direction == 3)
+            position.addY(-1*(2-direction) * getCurrentSpeed());
+        else
+            position.addX(-1*(3-direction) * getCurrentSpeed());
+    }
     public void move(){
         if (direction == 1 || direction == 3)
             position.addY((2-direction) * getCurrentSpeed());
         else
             position.addX((3-direction) * getCurrentSpeed());
     }
+
 
     /**
      * Turns the car left
@@ -196,9 +210,15 @@ public class Car implements Movable{
      * @return the position of the car
      */
 
-    public Location getPosition(){
+    public Location getLocation(){
 
         return position;
+
+    }
+
+    public void setLocation(Location position){
+
+        this.position = position;
 
     }
 

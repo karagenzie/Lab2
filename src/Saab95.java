@@ -1,18 +1,17 @@
 import java.awt.*;
 
-public class Saab95 implements getAndSet, Engine, Movable{
+public class Saab95 extends Car{
 
     private boolean turboOn;
-    private Car car;
 
     /**
-     * Calls the Car constructor with certain parameters
+     * Calls the superclass constructor with certain parameters
      * Also sets the turbo to off
      */
 
     public Saab95(){
 
-        car = new Car(2, 125, Color.red, "Saab95");
+        super(2, 125, Color.red, "Saab95");
         turboOn = false;
 
     }
@@ -22,12 +21,88 @@ public class Saab95 implements getAndSet, Engine, Movable{
      */
 
     public void setTurboOn(){
-	    turboOn = true;
+        turboOn = true;
     }
 
     /**
      * Sets the turbo to off
      */
+
+    public void setTurboOff(){
+        turboOn = false;
+    }
+
+    /**
+     * Returns the speed factor
+     * Overrides the super class's abstract speed factor class
+     * It is now equal to the engine power multiplied by 0.01,
+     * multiplied by 1.3 (if the turbo is on)
+     * @return the speed factor
+     */
+
+    @Override
+    public double speedFactor(){
+        double turbo = 1;
+        if(turboOn) turbo = 1.3;
+        return getEnginePower() * 0.01 * turbo;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+public class Saab95 implements getAndSet, Engine, Movable{
+
+    private boolean turboOn;
+    private Car car;
+
+    public Saab95(){
+
+        car = new Car(2, 125, Color.red, "Saab95");
+        turboOn = false;
+
+    }
+
+
+
+    public void setTurboOn(){
+	    turboOn = true;
+    }
+
 
     public void setTurboOff(){
 	    turboOn = false;
@@ -91,7 +166,7 @@ public class Saab95 implements getAndSet, Engine, Movable{
         return car.getDirection();
     }
 
-    public String getPosition() {
+    public Location getPosition() {
         return car.getPosition();
     }
 
@@ -108,3 +183,4 @@ public class Saab95 implements getAndSet, Engine, Movable{
     }
 
 }
+*/

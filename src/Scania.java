@@ -21,12 +21,6 @@ public class Scania implements Engine, getAndSet, Movable, TruckBed{
 
     }
 
-
-    private double speedFactor(){
-
-        return getEnginePower() * 0.01;
-
-    }
     private boolean roadReady(){
         return (bedAngle == 0);
     }
@@ -48,16 +42,24 @@ public class Scania implements Engine, getAndSet, Movable, TruckBed{
     public void gas(double amount) {
 
         if (roadReady())
-           car.gas(amount, speedFactor());
+           car.gas(amount);
         else
             System.out.println("The bed can't be raised if you want to gas");
     }
 
     @Override
     public void brake(double amount) {
-        car.brake(amount, speedFactor());
+        car.brake(amount);
     }
 
+    @Override
+    public void reverse() {
+        if (roadReady()) {
+            car.reverse();
+        } else {
+            System.out.println("Truck can't move while bed is raised");
+        }
+    }
     @Override
     public void move() {
         if(roadReady()){
@@ -84,8 +86,8 @@ public class Scania implements Engine, getAndSet, Movable, TruckBed{
     }
 
     @Override
-    public Location getPosition() {
-        return car.getPosition();
+    public Location getLocation() {
+        return car.getLocation();
     }
 
     @Override
