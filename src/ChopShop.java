@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class ChopShop<Vehicle extends Car> {
-    private ArrayList<>
+
     private CarTransport trans;
 
     public ChopShop(int maxCap){
