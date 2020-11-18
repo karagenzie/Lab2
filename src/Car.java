@@ -78,6 +78,12 @@ public class Car implements Movable{
         color = clr;
     }
 
+    public String getModelName(){
+
+        return modelName;
+
+    }
+
     /**
      * Starts the engine
      * Current speed gets set to 0.1

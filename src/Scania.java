@@ -115,11 +115,17 @@ public class Scania implements Engine, getAndSet, Movable, TruckBed{
         car.setColor(clr);
     }
 
+    public String getModelName(){
+
+        return car.getModelName();
+
+    }
+
     @Override
     public void raiseBed(int angle) {
 
-        if (roadReady())
-        bedAngle = Math.min(bedAngle + angle, 70);
+        if (car.getCurrentSpeed()==0)
+            bedAngle = Math.min(bedAngle + angle, 70);
 
         else
             System.out.println("You can't raise the bed when the truck is moving.");

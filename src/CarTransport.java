@@ -1,15 +1,15 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class CarTransport implements Engine, getAndSet, Movable, Ramp{
+public class CarTransport implements Engine, getAndSet, Movable, Ramp {
 
-    private static double distance = 1;
+    private static double close = 1;
 
     private Scania truck;
     private ArrayList<Car> cars;
     private int maxCap = 5;
 
-    public CarTransport(double enginePower, int maxCap){
+    public CarTransport(double enginePower, int maxCap) {
 
         truck = new Scania(2, enginePower, Color.BLACK, "Car Transport");
 
@@ -24,7 +24,7 @@ public class CarTransport implements Engine, getAndSet, Movable, Ramp{
     }
 
 
-    public double getEnginePower(){
+    public double getEnginePower() {
         return truck.getEnginePower();
     }
 
@@ -41,6 +41,12 @@ public class CarTransport implements Engine, getAndSet, Movable, Ramp{
 
     public void setColor(Color clr) {
         truck.setColor(clr);
+    }
+
+    public String getModelName(){
+
+        return truck.getModelName();
+
     }
 
     public void startEngine() {
@@ -89,89 +95,78 @@ public class CarTransport implements Engine, getAndSet, Movable, Ramp{
         return truck.getLocation();
     }
 
-    public void gas(double amount){
+    public void gas(double amount) {
 
         truck.gas(amount);
 
     }
 
-    public void brake(double amount){
+    public void brake(double amount) {
 
         truck.brake(amount);
 
     }
 
-    public void raiseRamp(){
+    public void raiseRamp() {
 
         truck.raiseBed(70);
 
     }
 
-    public void lowerRamp(){
+    public void lowerRamp() {
 
         truck.lowerBed(70);
 
     }
 
-    private boolean rampIsDown(){
+    private boolean rampIsDown() {
         return (truck.getBedAngle() == 0);
     }
 
     private boolean canLoad(Car car) {
         if (cars.size() < maxCap) {
-            if (rampIsDown()) {
-
-                String dir = getDirection();
-                double tx = getLocation().getX();
-                double ty = getLocation().getY();
-                double cx = car.getLocation().getX();
-                double cy = car.getLocation().getY();
-
-                if (tx == cx) {
-
-                    double dist = ty - cy;
-
-                    if ((dist > 0 && dist < distance && dir == "North") ||
-                            (dist < 0 && dist > -1 * distance && dir == "South")) {
-                        return true;
-                    }
-                } else if (ty == cy) {
-
-                    double dist = tx - cx;
-
-                    if ((dist > 0 && dist < distance && dir == "East") || (dist < 0 && dist > -1 * distance && dir == "West")) {
-                        return true;
-
-                    }
-                }
-            }
+            if (rampIsDown())
+                if ((Math.abs(getLocation().getX() - car.getLocation().getX()) < close
+                        && Math.abs(getLocation().getY() - car.getLocation().getY()) < close))
+                    return true;
         }
-            return false;
-
+        return false;
     }
 
-    public void loadOff(){
+    public void loadOff() {
         if (rampIsDown()) {
 
-            Car car = cars.get(cars.size()-1);
+            Car car = cars.get(cars.size() - 1);
             car.reverse();
-            cars.remove(cars.size()-1);
+            cars.remove(cars.size() - 1);
 
 
         }
-
     }
 
-    public void loadOn(Car car){
+    public void loadOn(Car car) {
 
-            if (canLoad(car)) {
+        if (canLoad(car)) {
 
-                cars.add(car);
-                car.setLocation(getLocation());
-                car.stopEngine();
+            cars.add(car);
 
-            }
+            while (!car.getDirection().equals(getDirection()))
+                car.turnLeft();
+
+            car.setLocation(getLocation());
+            car.stopEngine();
         }
+        else
+            System.out.println("There is a problem with the loading");
+
     }
+
+    public Car lastCar(){
+
+        return cars.get(cars.size()-1);
+
+    }
+
+}
 
 

@@ -1,7 +1,7 @@
 import org.junit.Test;
 
 public class testDemo {
-    Scania lastbil = new Scania();
+    Scania lastbil = new Scania(100);
 
     @Test
     public void testRoadReady(){
