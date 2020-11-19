@@ -1,137 +1,89 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class CarTransport implements Engine, getAndSet, Movable, Ramp, Load {
+public class CarTransport extends MotorVehicle implements Engine, getAndSet, Movable, Load {
 
     private static double close = 1;
-
-    private Scania truck;
     private ArrayList<Car> cars;
-    private int maxCap = 5;
+    private int maxCap;
+    private int maxWeight;
+    private Ramp ramp;
 
-    public CarTransport(double enginePower, int maxCap) {
+    public CarTransport(double enginePower, int maxCap, int maxWeight) {
 
-        truck = new Scania(2, enginePower, Color.BLACK, "Car Transport");
+        super(2, enginePower, Color.BLACK, "Car Transport", 20000);
 
-        cars = new ArrayList<Car>();
+        cars = new ArrayList<>();
         this.maxCap = maxCap;
+        this.maxWeight = maxWeight;
 
     }
 
-    public CarTransport(double nrDoors, double enginePower, Color color, String modelName, int maxCap){
-
-
-
-    }
-
-
-    public int getNrDoors() {
-        return truck.getNrDoors();
-    }
-
-
-    public double getEnginePower() {
-        return truck.getEnginePower();
-    }
-
-
-    public double getCurrentSpeed() {
-        return truck.getCurrentSpeed();
-    }
-
-
-    public Color getColor() {
-        return truck.getColor();
-    }
-
-
-    public void setColor(Color clr) {
-        truck.setColor(clr);
-    }
-
-    public String getModelName(){
-
-        return truck.getModelName();
-
-    }
+    private boolean roadReady(){return !ramp.isDown();}
 
     public void startEngine() {
-        truck.startEngine();
-
-    }
-
-    public void stopEngine() {
-        truck.stopEngine();
+        if (roadReady())
+            super.startEngine();
+        else
+            System.out.println("The bed can't be raised if you want to start the engine");
     }
 
     public void reverse() {
-        truck.reverse();
 
-        for (Car i : cars)
-            i.setLocation(getLocation());
+       if (roadReady()) {
+           super.reverse();
+           for (Car i : cars)
+               i.setLocation(getLocation());
+       }
     }
 
     public void move() {
-        truck.move();
-
-        for (Car i : cars)
+        if(roadReady()) {
+            super.move();
+            for (Car i : cars)
             i.setLocation(getLocation());
+        }
     }
 
     public void turnLeft() {
-        truck.turnLeft();
+        super.turnLeft();
 
         for (Car i : cars)
             i.turnLeft();
     }
 
     public void turnRight() {
-        truck.turnRight();
+        super.turnRight();
 
         for (Car i : cars)
             i.turnRight();
 
     }
 
-    public String getDirection() {
-        return truck.getDirection();
-    }
-
-    public Location getLocation() {
-        return truck.getLocation();
-    }
-
     public void gas(double amount) {
 
-        truck.gas(amount);
-
+        if (roadReady())
+            super.gas(amount);
+        else
+            System.out.println("You can't gas if the ramp is raised!");
     }
 
-    public void brake(double amount) {
 
-        truck.brake(amount);
+    private int carsWeight(){
 
-    }
+        int weight = 0;
 
-    public void raiseRamp() {
+        for (Car i : cars){
+            weight += i.getWeight();
+        }
 
-        truck.raiseBed(70);
+        return weight;
 
-    }
-
-    public void lowerRamp() {
-
-        truck.lowerBed(70);
-
-    }
-
-    private boolean rampIsDown() {
-        return (truck.getBedAngle() == 0);
     }
 
     private boolean canLoad(Car car) {
-        if (cars.size() < maxCap) {
-            if (rampIsDown())
+        if (cars.size() < maxCap && carsWeight() + car.getWeight() < maxWeight) {
+            if (!roadReady())
                 if (Math.sqrt(Math.pow(getLocation().getX() - car.getLocation().getX(),2)
                         + Math.pow(getLocation().getY() - car.getLocation().getY(), 2)) < close)
                     return true;
@@ -140,13 +92,12 @@ public class CarTransport implements Engine, getAndSet, Movable, Ramp, Load {
     }
 
     public void loadOff() {
-        if (rampIsDown()) {
+        if (!roadReady()) {
 
             Car car = cars.get(cars.size() - 1);
             car.startEngine();
             car.reverse();
             cars.remove(cars.size() - 1);
-
 
         }
     }

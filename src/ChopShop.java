@@ -1,16 +1,16 @@
 import java.util.ArrayList;
 
-public class ChopShop<Vehicle extends Car> implements Load<Vehicle> {
+public class ChopShop<Model extends Car> implements Load<Model> {
 
     private CarTransport garage;
 
     public ChopShop(int maxCap){
 
-        garage = new CarTransport(0, maxCap);
+        garage = new CarTransport(0, maxCap, maxCap*100000);
 
     }
 
-    public void loadOn(Vehicle car){
+    public void loadOn(Model car){
 
         garage.loadOn(car);
 
