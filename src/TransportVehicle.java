@@ -30,7 +30,7 @@ public abstract class TransportVehicle extends MotorVehicle implements RampContr
     }
 
     /**
-     * moves the transportvehicle if the ramp is up
+     * moves the transport vehicle if the ramp is up
      */
     @Override
     public void move() {
@@ -45,7 +45,7 @@ public abstract class TransportVehicle extends MotorVehicle implements RampContr
     }
 
     /**
-     * moves the transportvehicle backwards
+     * moves the transport vehicle backwards if the ramp is up
      */
     @Override
     public void reverse() {

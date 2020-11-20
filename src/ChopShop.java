@@ -12,7 +12,7 @@ public class ChopShop<Model extends Car> implements Load<Model> {
 
     public ChopShop(int maxCap){
 
-        garage = new Garage(maxCap, 0, true);
+        garage = new Garage<>(maxCap, 0, true);
         position = new Location(0,0);
 
     }

@@ -111,7 +111,7 @@ public class Garage<model extends Car>{
      * how heavy it is and how many cars the garage already has
      * @param car the car that is being loaded on
      * @param l the location of the place with the garage
-     * @return
+     * @return if the car can be loaded
      */
 
     public boolean canLoad(model car, Location l){

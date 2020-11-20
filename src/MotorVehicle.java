@@ -195,7 +195,7 @@ public abstract class MotorVehicle implements Movable, getAndSet, Engine{
 
 
     /**
-     * Turns the motorvehicle left
+     * Turns the motor vehicle left
      */
 
     public void turnLeft(){
@@ -206,7 +206,7 @@ public abstract class MotorVehicle implements Movable, getAndSet, Engine{
     }
 
     /**
-     * Turns the motorvehicle right
+     * Turns the motor vehicle right
      */
 
     public void turnRight(){
@@ -217,7 +217,7 @@ public abstract class MotorVehicle implements Movable, getAndSet, Engine{
     }
 
     /**
-     * Returns what direction the motorvehicle is facing in the form of a string
+     * Returns what direction the motor vehicle is facing in the form of a string
      * @return the direction
      */
 
@@ -235,7 +235,7 @@ public abstract class MotorVehicle implements Movable, getAndSet, Engine{
     }
 
     /**
-     * Returns the position of the motorvehicle in the form of a string
+     * Returns the position of the motor vehicle in the form of a string
      * @return position
      */
 
