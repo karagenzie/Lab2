@@ -38,7 +38,7 @@ public class Garage<model extends Car>{
     }
 
     /**
-     * Lets the user set a location for the cars in the garage
+     * Applies a location to the cars in the garage
      * @param l the desired location
      */
 
@@ -50,7 +50,7 @@ public class Garage<model extends Car>{
     }
 
     /**
-     * Lets the user set a location for all cars
+     * Applies a location to all cars
      * @param x the desired x-coordinate
      * @param y the desired y-coordinate
      */
@@ -107,7 +107,8 @@ public class Garage<model extends Car>{
     }
 
     /**
-     * Checks if a car can be loaded to a garage of a place certain location
+     * Checks if a car can be loaded to a garage based on where it is,
+     * how heavy it is and how many cars the garage already has
      * @param car the car that is being loaded on
      * @param l the location of the place with the garage
      * @return
