@@ -1,6 +1,9 @@
-public interface Load<Vehicle extends Car> {
+import java.util.ArrayList;
 
-    void loadOn(Vehicle car);
+public interface Load<Model extends Car> {
+
+    void loadOn(Model car);
     void loadOff();
+    ArrayList<Model> carList();
 
 }

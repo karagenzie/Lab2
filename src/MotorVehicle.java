@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public abstract class MotorVehicle{
+public abstract class MotorVehicle implements Movable, getAndSet, Engine{
 
     private int nrDoors;
     private double enginePower;
@@ -31,7 +31,7 @@ public abstract class MotorVehicle{
         this.weight = weight;
         direction = 1;
         position = new Location(0,0);
-        stopEngine();
+        startEngine();
 
     }
 
@@ -63,8 +63,8 @@ public abstract class MotorVehicle{
     }
 
     /**
-     * Returns the colour of the car
-     * @return the colour of the car
+     * Returns the colour of the motorvehicle
+     * @return the colour of the motorvehicle
      */
 
     public Color getColor(){
@@ -72,20 +72,28 @@ public abstract class MotorVehicle{
     }
 
     /**
-     * Sets the colour of the car using the Color parameter clr
-     * @param clr the desired colour for the car
+     * Sets the colour of the motorvehicle using the Color parameter clr
+     * @param clr the desired colour for the motorvehicle
      */
 
     public void setColor(Color clr){
         color = clr;
     }
 
+    /**
+     * returns the name of the model
+     * @return modelName
+     */
     public String getModelName(){
 
         return modelName;
 
     }
 
+    /**
+     * returns the weight of the vehicle
+     * @return weight
+     */
     public int getWeight(){
 
         return weight;
@@ -110,7 +118,10 @@ public abstract class MotorVehicle{
         currentSpeed = 0;
     }
 
-
+    /**
+     * returns how fast the speed is increasing
+     * @returns speedFactor
+     */
     public double speedFactor(){
 
         return getEnginePower() * 0.01;
@@ -162,7 +173,8 @@ public abstract class MotorVehicle{
     }
 
     /**
-     * Moves the car forward in the direction it is facing
+     * Reverses the motorvehicle, moving it in the reverse  direction
+     * it is facing
      */
 
     public void reverse(){
@@ -171,6 +183,9 @@ public abstract class MotorVehicle{
         else
             position.addX(-1*(3-direction) * getCurrentSpeed());
     }
+    /**
+     * Moves the motorvehicle forward in the direction it is facing
+     */
     public void move(){
         if (direction == 1 || direction == 3)
             position.addY((2-direction) * getCurrentSpeed());
@@ -180,7 +195,7 @@ public abstract class MotorVehicle{
 
 
     /**
-     * Turns the car left
+     * Turns the motorvehicle left
      */
 
     public void turnLeft(){
@@ -191,7 +206,7 @@ public abstract class MotorVehicle{
     }
 
     /**
-     * Turns the car right
+     * Turns the motorvehicle right
      */
 
     public void turnRight(){
@@ -202,7 +217,7 @@ public abstract class MotorVehicle{
     }
 
     /**
-     * Returns what direction the car is facing in the form of a string
+     * Returns what direction the motorvehicle is facing in the form of a string
      * @return the direction
      */
 
@@ -220,8 +235,8 @@ public abstract class MotorVehicle{
     }
 
     /**
-     * Returns the position of the car in the form of a string
-     * @return the position of the car
+     * Returns the position of the motorvehicle in the form of a string
+     * @return position
      */
 
     public Location getLocation(){
@@ -230,9 +245,24 @@ public abstract class MotorVehicle{
 
     }
 
+    /**
+     * Sets location of the vehicle in a coordinate system
+     * @param position a (x,y) location on a grid
+     */
     public void setLocation(Location position){
 
         this.position = position;
+
+    }
+
+    /**
+     * Sets location of the vehicle in a coordinate system
+     * @param x position of the car on the x-axis
+     * @param y position of the car on the y-axis
+     */
+    public void setLocation(double x, double y){
+
+        position.setLocation(x, y);
 
     }
 
