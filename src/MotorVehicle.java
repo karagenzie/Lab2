@@ -179,7 +179,7 @@ public abstract class MotorVehicle implements Movable, getAndSet, Engine{
 
     public void reverse(){
         if (direction == 1 || direction == 3)
-            position.addY(-1*(2-direction) * getCurrentSpeed());
+            position.addY((2-direction) * getCurrentSpeed());
         else
             position.addX(-1*(3-direction) * getCurrentSpeed());
     }
@@ -188,7 +188,7 @@ public abstract class MotorVehicle implements Movable, getAndSet, Engine{
      */
     public void move(){
         if (direction == 1 || direction == 3)
-            position.addY((2-direction) * getCurrentSpeed());
+            position.addY(-1*(2-direction) * getCurrentSpeed());
         else
             position.addX((3-direction) * getCurrentSpeed());
     }

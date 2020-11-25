@@ -21,7 +21,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
+    ArrayList<MotorVehicle> cars = new ArrayList<>();
 
     //methods:
 
@@ -29,7 +29,12 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240());
+        Volvo240 vov = new Volvo240();
+        cc.cars.add(vov);
+        cc.cars.get(0).setLocation(400,400);
+        //cc.cars.add(new Saab95());
+        //cc.cars.add(new Scania());
+
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -43,10 +48,22 @@ public class CarController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Car car : cars) {
+            for (MotorVehicle car : cars) {
+
+                if (!isInside(car)){
+
+                    car.reverse();
+                    car.turnLeft();
+                    car.turnLeft();
+
+                }
+
                 car.move();
                 int x = (int) Math.round(car.getLocation().getX());
                 int y = (int) Math.round(car.getLocation().getY());
+
+                System.out.println("x: " + x + " y: " + y);
+
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
@@ -54,10 +71,21 @@ public class CarController {
         }
     }
 
+    private boolean isInside(MotorVehicle car){
+
+        double carX = car.getLocation().getX();
+        double carY = car.getLocation().getY();
+
+        if (carX > 600 || carX < 0 || carY > 500 || carY < 0)
+            return false;
+        else
+            return true;
+    }
+
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Car car : cars
+        for (MotorVehicle car : cars
                 ) {
             car.gas(gas);
         }
@@ -65,10 +93,20 @@ public class CarController {
 
     void brake(int amount) {
         double brake = ((double) amount) / 100;
-        for (Car car : cars
+        for (MotorVehicle car : cars
         ) {
             car.brake(brake);
         }
+    }
+
+     void turboOff(){
+        for (Saab95 saab : cars)
+            saab.setTurboOff();
+     }
+
+    void turboOn(){
+        for (Saab95 saab : cars)
+            saab.setTurboOn();
     }
 
 }
