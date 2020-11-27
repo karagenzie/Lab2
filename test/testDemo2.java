@@ -1,4 +1,8 @@
 
+import Vehicles.Car;
+import Vehicles.CarTransport;
+import Vehicles.Saab95;
+import Vehicles.Volvo240;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

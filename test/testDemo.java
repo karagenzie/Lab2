@@ -1,3 +1,6 @@
+import Vehicles.ChopShop;
+import Vehicles.Location;
+import Vehicles.Saab95;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
