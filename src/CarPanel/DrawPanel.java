@@ -37,8 +37,9 @@ public class DrawPanel extends JPanel{
         // Print an error message in case file is not found with a try/catch block
         for (MotorVehicle car : cc.getCars()) {
             String name = car.getModelName();
+
             try {
-                carImages.put(name, ImageIO.read(new File("pics." + name + ".jpg")));
+                carImages.put(name, ImageIO.read(new File("src/pics/" + name + ".jpg")));
 
                 //volvoImage = ImageIO.read(CarPanel.DrawPanel.class.getResourceAsStream("pics/Vehicles.Volvo240.jpg"));
             } catch (IOException ex) {
@@ -55,11 +56,11 @@ public class DrawPanel extends JPanel{
 
         super.paintComponent(g);
 
-        for (MotorVehicle car: cc.getCars())
-        g.drawImage(carImages.get(car.getModelName()), (int) car.getLocation().getX(), (int) car.getLocation().getY(), null);
+        for (MotorVehicle car: cc.getCars()) {
+            g.drawImage(carImages.get(car.getModelName()), (int) car.getLocation().getX(), (int) car.getLocation().getY(), null);
 
-        if (cc.getCars().size() == 0)
-            System.out.println("cars is empty");
+            //System.out.println(car.getModelName());
+        }
 
         // see javadoc for more info on the parameters
     }
