@@ -126,12 +126,12 @@ public class CarController {
     void liftBed(){
         for (MotorVehicle scan : cars)
             if (scan.getClass() == Scania.class)
-                ((Scania) scan).raiseBed(20);
+                ((Scania) scan).raiseBed(70);
     }
     void lowerBed(){
         for (MotorVehicle scan : cars)
             if (scan.getClass() == Scania.class)
-                ((Scania) scan).lowerBed(20);
+                ((Scania) scan).lowerBed(70);
     }
 
     void start(){

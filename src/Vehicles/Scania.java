@@ -16,37 +16,6 @@ public class Scania extends MotorVehicle implements TruckBed {
         truckBed = new Ramp();
     }
 
-    private boolean roadReady() {
-        return (truckBed.getAngle() == 0);
-    }
-
-    /**
-     * Moves the Vehicles.Scania truck
-     */
-
-    @Override
-    public void move() {
-
-        if (roadReady())
-            super.move();
-        else
-            System.out.println("Truck can't move while bed is raised");
-    }
-
-    /**
-     * Reverses the Vehicles.Scania truck
-     */
-
-    @Override
-    public void reverse() {
-
-        if (roadReady())
-            super.reverse();
-        else
-            System.out.println("Truck can't move while bed is raised");
-
-    }
-
     /**
      * Raises the truck bed by a given angle
      * Cannot exceed 70 degrees
@@ -57,7 +26,6 @@ public class Scania extends MotorVehicle implements TruckBed {
 
         if (getCurrentSpeed() == 0)
             truckBed.raiseRamp(angle);
-
         else
             System.out.println("You can't raise the bed when the truck is moving.");
     }
@@ -79,6 +47,18 @@ public class Scania extends MotorVehicle implements TruckBed {
 
     public int getBedAngle() {
         return truckBed.getAngle();
+    }
+
+    @Override
+    public void startEngine(){
+        if (getBedAngle() == 0)
+            super.startEngine();
+    }
+
+    @Override
+    public void gas(double amount){
+        if (getBedAngle() == 0)
+            super.gas(amount);
     }
 
 }
