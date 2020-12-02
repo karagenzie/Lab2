@@ -20,9 +20,8 @@ public class CarView extends JFrame{
     private static final int Y = 800;
 
     CarController carC;
+
     DrawPanel drawPanel;
-
-
     JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();
@@ -101,74 +100,17 @@ public class CarView extends JFrame{
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(stopButton);
 
-        // This actionListener is for the gas button only
-        // TODO: Create more for each component as necessary
-        gasButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.gas(gasAmount);
-            }
-        });
-
-        brakeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.brake(gasAmount);
-            }
-        });
-
-        turboOnButton.addActionListener(new ActionListener(){
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.turboOn();
-            }
-        });
-
-        turboOffButton.addActionListener(new ActionListener(){
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.turboOff();
-            }
-        });
-
-        liftBedButton.addActionListener(new ActionListener(){
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.liftBed();
-            }
-        });
+        gasButton.addActionListener(e -> carC.gas(gasAmount));
+        brakeButton.addActionListener(e -> carC.brake(gasAmount));
+        turboOnButton.addActionListener(e -> carC.turboOn());
+        turboOffButton.addActionListener(e -> carC.turboOff());
+        liftBedButton.addActionListener(e -> carC.liftBed());
+        lowerBedButton.addActionListener(e -> carC.lowerBed());
+        startButton.addActionListener(e -> carC.start());
+        stopButton.addActionListener(e -> carC.stop());
 
 
-        lowerBedButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                carC.lowerBed();
-            }
-        });
-
-        startButton.addActionListener(new ActionListener(){
-
-            @Override
-            public void actionPerformed(ActionEvent e){carC.start();}
-
-
-        });
-
-        stopButton.addActionListener(new ActionListener(){
-
-            @Override
-            public void actionPerformed(ActionEvent e){carC.stop();}
-
-        });
-
-
-
-
-
-        // Make the frame pack all it's components by respecting the sizes if possible.
+        // Make the frame pack all its components by respecting the sizes if possible.
         this.pack();
 
         // Get the computer screen resolution

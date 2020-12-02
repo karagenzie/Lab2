@@ -66,20 +66,13 @@ public class CarController {
         public void actionPerformed(ActionEvent e) {
             for (MotorVehicle car : cars) {
 
-                if (!isInside(car)){
-                    car.reverse();
-                    car.turnLeft();
-                    car.turnLeft();
-                }
+                getInside(car);
 
                 car.move();
+
                 int x = (int) Math.round(car.getLocation().getX());
                 int y = (int) Math.round(car.getLocation().getY());
 
-                //System.out.println("x: " + x + " y: " + y);
-
-                //frame.drawPanel.moveit(x, y);
-                // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
         }
@@ -89,6 +82,19 @@ public class CarController {
 
         return cars;
 
+    }
+
+    private void getInside(MotorVehicle car){
+        if (!isInside(car)) {
+
+            car.turnLeft();
+            car.turnLeft();
+
+            while (!isInside(car)) {
+                car.move();
+            }
+
+        }
     }
 
     private boolean isInside(MotorVehicle car){
