@@ -124,7 +124,7 @@ public abstract class MotorVehicle implements Movable, getAndSet, Engine {
      * returns how fast the speed is increasing
      * @returns speedFactor
      */
-    public double speedFactor(){
+    protected double speedFactor(){
 
         return getEnginePower() * 0.01;
 

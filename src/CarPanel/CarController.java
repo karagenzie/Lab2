@@ -37,9 +37,17 @@ public class CarController {
         CarController cc = new CarController();
 
         Volvo240 vov = new Volvo240();
+        vov.setLocation(400,400);
+
+        Saab95 saab = new Saab95();
+        saab.setLocation(200, 200);
+
+        Scania scan = new Scania();
+        scan.setLocation(100, 100);
+
         cc.cars.add(vov);
-        cc.cars.get(0).setLocation(400,400);
-        cc.cars.add(new Saab95());
+        cc.cars.add(saab);
+        cc.cars.add(scan);
         cc.cars.add(new Scania());
 
 

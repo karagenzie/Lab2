@@ -13,7 +13,7 @@ public class Saab95 extends Car{
 
     public Saab95(){
 
-        super(2, 125, Color.red, "Vehicles.Saab95", 1100);
+        super(2, 125, Color.red, "Saab95", 1100);
         turboOn = false;
 
     }
@@ -43,7 +43,7 @@ public class Saab95 extends Car{
      */
 
     @Override
-    public double speedFactor(){
+    protected double speedFactor(){
         double turbo = 1;
         if(turboOn) turbo = 1.3;
         return getEnginePower() * 0.01 * turbo;

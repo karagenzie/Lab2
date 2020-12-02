@@ -12,9 +12,10 @@ public class Volvo240 extends Car{
 
     public Volvo240(){
 
-        super(4, 100, Color.black, "Vehicles.Volvo240", 1300);
+        super(4, 100, Color.black, "Volvo240", 1300);
 
     }
+
 
     /**
      * Returns the speed factor
@@ -25,7 +26,7 @@ public class Volvo240 extends Car{
      */
 
     @Override
-    public double speedFactor(){
+    protected double speedFactor(){
         return getEnginePower() * 0.01 * trimFactor;
     }
 }

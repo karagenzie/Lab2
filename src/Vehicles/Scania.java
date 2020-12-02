@@ -12,7 +12,7 @@ public class Scania extends MotorVehicle implements TruckBed {
 
     public Scania() {
 
-        super(2, 600, Color.white, "Vehicles.Scania", 13000);
+        super(2, 600, Color.white, "Scania", 13000);
         truckBed = new Ramp();
     }
 

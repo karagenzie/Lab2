@@ -14,7 +14,7 @@ public class CarTransport extends TransportVehicle{
 
     public CarTransport(int maxCap, int maxWeight) {
 
-        super(2, 800, Color.BLACK, "Vehicles.Car Transport",
+        super(2, 800, Color.BLACK, "Car Transport",
                 20000, maxCap, maxWeight, true);
 
     }
