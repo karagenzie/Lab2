@@ -19,18 +19,18 @@ public class DrawPanel extends JPanel{
 
 
     private Map<String, BufferedImage> carImages = new HashMap<>();
-    private CarModel cModel = new CarModel();
+    private CarController cc = new CarController();
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y, CarModel cModel) {
+    public DrawPanel(int x, int y, CarController cc) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
-        this.cModel = cModel;
+        this.cc = cc;
 
 
         // Print an error message in case file is not found with a try/catch block
-        for (MotorVehicle car : cModel.getCars()) {
+        for (MotorVehicle car : cc.getCars()) {
             String name = car.getModelName();
 
             try {
@@ -51,7 +51,7 @@ public class DrawPanel extends JPanel{
 
         super.paintComponent(g);
 
-        for (MotorVehicle car: cModel.getCars()) {
+        for (MotorVehicle car: cc.getCars()) {
             g.drawImage(carImages.get(car.getModelName()), (int) car.getLocation().getX(), (int) car.getLocation().getY(), null);
 
             //System.out.println(car.getModelName());
