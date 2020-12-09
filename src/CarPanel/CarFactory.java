@@ -7,6 +7,13 @@ import Vehicles.Scania;
 
 public class CarFactory {
 
+    /**
+     * Creates a volvo at a given location
+     * @param x the x-coordinate
+     * @param y the y-coordinate
+     * @return the created volvo
+     */
+
     public static Volvo240 createVolvo(double x, double y){
 
         Volvo240 volvo = new Volvo240();
@@ -15,6 +22,13 @@ public class CarFactory {
         return volvo;
 
     }
+
+    /**
+     * Creates a saab at a given location
+     * @param x the x-coordinate
+     * @param y the y-coordinate
+     * @return the created saab
+     */
 
     public static Saab95 createSaab(double x, double y){
 
@@ -25,6 +39,12 @@ public class CarFactory {
 
     }
 
+    /**
+     * Creates a Scania object at a given location
+     * @param x the x-coordinate
+     * @param y the y-coordinate
+     * @return the created Scania
+     */
     public static Scania createScania(double x, double y){
 
         Scania scan = new Scania();
@@ -33,6 +53,13 @@ public class CarFactory {
         return scan;
 
     }
+
+    /**
+     * Creates a random vehicle with a random location within certain limits
+     * @param xLimit the maximum x-value
+     * @param yLimit the maximum y-value
+     * @return the created vehicle
+     */
 
     public static MotorVehicle createRandomCar(int xLimit, int yLimit){
 

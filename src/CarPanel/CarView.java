@@ -4,8 +4,6 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -45,6 +43,10 @@ public class CarView extends JFrame implements CarObserver{
         initComponents(framename);
     }
 
+    /**
+     * tells the drawpanel to repaint if cars have moved
+     */
+
     public void carsMoved(){
         drawPanel.repaint();
     }
@@ -66,6 +68,7 @@ public class CarView extends JFrame implements CarObserver{
                         100, //max
                         1);//step
         gasSpinner = new JSpinner(spinnerModel);
+
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 gasAmount = (int) ((JSpinner)e.getSource()).getValue();
@@ -112,8 +115,6 @@ public class CarView extends JFrame implements CarObserver{
         lowerBedButton.addActionListener(e -> carC.lowerBed());
         startButton.addActionListener(e -> carC.start());
         stopButton.addActionListener(e -> carC.stop());
-
-
 
 
         // Make the frame pack all its components by respecting the sizes if possible.

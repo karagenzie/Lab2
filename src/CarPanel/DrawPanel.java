@@ -22,6 +22,13 @@ public class DrawPanel extends JPanel{
     private CarModel cModel = new CarModel();
 
     // Initializes the panel and reads the images
+
+    /**
+     * Constructs a DrawPanel object
+     * @param x position on the x-axis
+     * @param y positon on the y-axis
+     * @param cModel a CarModel object
+     */
     public DrawPanel(int x, int y, CarModel cModel) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));

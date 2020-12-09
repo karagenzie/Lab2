@@ -1,7 +1,6 @@
 package CarPanel;
 
 import Vehicles.MotorVehicle;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,23 +9,29 @@ public class SpeedView extends JPanel implements CarObserver{
     private CarModel cModel;
     JLabel speedLabel;
 
+    /**
+     * Makes a list of the cars and their respective speeds
+     * @param cModel the car model that has the cars
+     */
 
     public SpeedView(CarModel cModel){
 
         this.cModel = cModel;
-
-        setLayout(new BorderLayout());
         speedLabel = new JLabel();
 
+        this.setLayout(new BorderLayout());
         this.add(speedLabel, SwingConstants.CENTER);
-        setBackground(Color.CYAN);
-        setPreferredSize(new Dimension(800/5,200));
+        this.setBackground(Color.CYAN);
+        this.setPreferredSize(new Dimension(800/5,200));
+
         update();
 
     }
 
-    private String getCarSpeeds(){
+    private String getCarSpeedString(){
+
         String carSpeeds = "<html> Speeds:" ;
+
         for (MotorVehicle car : cModel.getCars()){
             carSpeeds = carSpeeds + "<br/>" + car.getModelName() + ": " +String.format("%.2f", car.getCurrentSpeed());
         }
@@ -37,13 +42,11 @@ public class SpeedView extends JPanel implements CarObserver{
     }
 
     private void update(){
-            speedLabel.setText(getCarSpeeds());
+            speedLabel.setText(getCarSpeedString());
     }
 
     public void carsMoved(){
         update();
     }
-
-
 
 }

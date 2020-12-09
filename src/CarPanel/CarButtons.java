@@ -4,14 +4,19 @@ import javax.swing.*;
 
 public class CarButtons extends JPanel {
 
-    CarModel cModel;
+    CarController cc;
 
     JButton addCarButton = new JButton("Add Random Car");
     JButton removeCarButton = new JButton("Remove Random Car");
 
-    public CarButtons(CarModel cModel){
+    /**
+     * Creates a panel with buttons for adding and removing random cars
+     * @param cc the car controller
+     */
 
-        this.cModel = cModel;
+    public CarButtons(CarController cc){
+
+        this.cc = cc;
         initButtons();
 
     }
@@ -21,8 +26,8 @@ public class CarButtons extends JPanel {
         this.add(addCarButton);
         this.add(removeCarButton);
 
-        addCarButton.addActionListener(e -> cModel.addRandomCar());
-        removeCarButton.addActionListener(e -> cModel.removeRandomCar());
+        addCarButton.addActionListener(e -> cc.addCar());
+        removeCarButton.addActionListener(e -> cc.removeCar());
 
     }
 }

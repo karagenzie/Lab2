@@ -19,13 +19,22 @@ public class CarModel {
         observers = new ArrayList<>();
     }
 
+    /**
+     *
+     * @return arraylist of motorvehicles
+     */
     public ArrayList<MotorVehicle> getCars() {
         return cars;
     }
 
-    public void addObserver(CarObserver observer) {
+    protected void addObserver(CarObserver observer) {
         observers.add(observer);
     }
+
+    /**
+     * adds a car
+     * @param car chosen car to add
+     */
 
     public void addCar(MotorVehicle car){
 
@@ -34,7 +43,7 @@ public class CarModel {
     }
 
 
-    public void update() {
+    protected void update() {
 
         for (MotorVehicle car : cars) {
             getInside(car);

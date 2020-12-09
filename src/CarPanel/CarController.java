@@ -12,13 +12,15 @@ import java.awt.event.ActionListener;
  * */
 
 public class CarController {
-    // member fields:
 
-    // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 50;
     private Timer timer = new Timer(delay, new TimerListener());
-
     private CarModel cModel;
+
+    /**
+     * Creates a controller for the program
+     * @param cModel The model that it controls
+     */
 
     public CarController(CarModel cModel){
 
@@ -37,6 +39,10 @@ public class CarController {
         }
     }
 
+    /**
+     * Starts the timer
+     */
+
     public void startTime(){
         timer.start();
     }
@@ -44,18 +50,14 @@ public class CarController {
     void gas(int amount) {
         cModel.gas(amount);
     }
-
     void brake(int amount) {
         cModel.brake(amount);
     }
 
-     void turboOff(){
+    void turboOff(){
         cModel.turboOff();
      }
-
-    void turboOn(){
-        cModel.turboOn();
-    }
+    void turboOn(){ cModel.turboOn();}
 
     void liftBed(){
         cModel.liftBed();
@@ -67,11 +69,10 @@ public class CarController {
     void start(){
         cModel.start();
     }
-
     void stop(){
         cModel.stop();
     }
-   /* void addCar(){
-        cModel.addCar(new Saab95() sab);
-    }*/
+
+    void addCar(){cModel.addRandomCar();}
+    void removeCar(){cModel.removeRandomCar();}
 }
