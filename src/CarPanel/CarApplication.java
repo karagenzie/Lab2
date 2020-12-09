@@ -25,6 +25,10 @@ public class CarApplication {
         view.add(sv);
         cModel.addObserver(sv);
 
+        CarButtons button = new CarButtons(cModel);
+        view.add(button);
+
+        view.pack();
         cc.startTime();
 
     }

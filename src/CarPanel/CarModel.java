@@ -8,9 +8,11 @@ import java.util.ArrayList;
 
 public class CarModel {
 
+    private static final int WIDTH = 700;
+    private static final int HEIGHT = 500;
+
     private ArrayList<MotorVehicle> cars;
     private ArrayList<CarObserver> observers;
-
 
     public CarModel() {
         cars = new ArrayList<>();
@@ -64,7 +66,7 @@ public class CarModel {
         double carX = car.getLocation().getX();
         double carY = car.getLocation().getY();
 
-        if (carX > 600 || carX < 0 || carY > 500 || carY < 0)
+        if (carX > WIDTH || carX < 0 || carY > HEIGHT || carY < 0)
             return false;
         else
             return true;
@@ -119,4 +121,19 @@ public class CarModel {
         for (MotorVehicle car : cars)
             car.stopEngine();
     }
+
+    void addRandomCar(){
+
+        if (cars.size() < 10)
+            cars.add(CarFactory.createRandomCar(WIDTH, HEIGHT));
+
+    }
+
+    void removeRandomCar(){
+
+        int carIndex = (int) Math.random() * cars.size();
+        cars.remove(carIndex);
+
+    }
+
 }

@@ -33,7 +33,6 @@ public class CarView extends JFrame implements CarObserver{
     JButton turboOffButton = new JButton("Saab Turbo off");
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Scania Lower Bed");
-    JButton addCarButton = new JButton("Add new car");
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
@@ -87,7 +86,7 @@ public class CarView extends JFrame implements CarObserver{
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
-        controlPanel.add(addCarButton, 6);
+
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
@@ -111,7 +110,6 @@ public class CarView extends JFrame implements CarObserver{
         turboOffButton.addActionListener(e -> carC.turboOff());
         liftBedButton.addActionListener(e -> carC.liftBed());
         lowerBedButton.addActionListener(e -> carC.lowerBed());
-        //addCarButton.addActionListener(e -> carC.addCar());
         startButton.addActionListener(e -> carC.start());
         stopButton.addActionListener(e -> carC.stop());
 

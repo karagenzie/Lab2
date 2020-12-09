@@ -17,15 +17,18 @@ public class SpeedView extends JPanel implements CarObserver{
 
         setLayout(new BorderLayout());
         speedLabel = new JLabel();
+
         this.add(speedLabel, SwingConstants.CENTER);
+        setBackground(Color.CYAN);
+        setPreferredSize(new Dimension(800/5,200));
         update();
 
     }
+
     private String getCarSpeeds(){
         String carSpeeds = "<html> Speeds:" ;
-
         for (MotorVehicle car : cModel.getCars()){
-            carSpeeds = carSpeeds + "<br/>" + car.getModelName() + ": " + car.getCurrentSpeed() ;
+            carSpeeds = carSpeeds + "<br/>" + car.getModelName() + ": " +String.format("%.2f", car.getCurrentSpeed());
         }
 
         carSpeeds = carSpeeds + "<html>";
