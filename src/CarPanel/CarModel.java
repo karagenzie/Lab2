@@ -140,9 +140,9 @@ public class CarModel {
 
     void removeRandomCar(){
 
-        int carIndex = (int) Math.random() * cars.size();
-        cars.remove(carIndex);
-
+        if (cars.size() > 0) {
+            int carIndex = (int) Math.random() * cars.size();
+            cars.remove(carIndex);
+        }
     }
-
 }
